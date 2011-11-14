@@ -34,7 +34,7 @@ class sudoers::config {
   file { "${sudoers::params::ss_basedir}/fragment/00_sudoers_defaults":
     ensure => file,
     source => 'puppet:///modules/sudoers/sudoers_defaults',
-    before => Exec['rebuild-sudoers'],
+    notify => Exec['rebuild-sudoers'],  
   }
   file { $sudoers::params::ss_sudoers_file:
     ensure  => file,
